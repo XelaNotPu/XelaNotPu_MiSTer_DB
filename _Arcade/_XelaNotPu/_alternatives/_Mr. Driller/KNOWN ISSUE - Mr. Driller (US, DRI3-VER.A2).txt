@@ -1,0 +1,1 @@
+KNOWN ISSUE (2026-10-04): the attract mode of this US set still flashes on the animated sequences and its score screen degrades after a few seconds. Gameplay is fine. The Japan set in the main _Arcade folder renders every scene whole and is the recommended set; this one is kept for people who want the US ROM revision.
