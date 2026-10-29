@@ -9,7 +9,8 @@
 	<platform>Namco Gorgon (System 22.5)</platform>
 	<rotation>horizontal</rotation>
 	<region>World</region>
-	<mraauthor>XelaNotPu</mraauthor>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<buttons names="Start,Service Enter,Service Up,Service Down,Coin,Service,Test,Auto Paddle,Pause" default="Start,A,X,Y,Select,L,R,B,-"/>
 
 	<!--

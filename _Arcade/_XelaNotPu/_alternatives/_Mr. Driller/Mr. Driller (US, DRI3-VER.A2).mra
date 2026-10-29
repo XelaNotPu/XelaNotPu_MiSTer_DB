@@ -3,6 +3,8 @@
 	<name>Mr. Driller (US, DRI3/VER.A2)</name>
 	<setname>mrdrillr</setname>
 	<rbf>XNSYSTEM12</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0277</mameversion>
 	<year>1999</year>
 	<manufacturer>Namco</manufacturer>

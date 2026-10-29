@@ -3,6 +3,8 @@
 	<name>Ghoul Panic (World, OB2/VER.A)</name>
 	<setname>ghlpanic</setname>
 	<rbf>XNSYSTEM12</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0277</mameversion>
 	<year>1999</year>
 	<manufacturer>Eighting / Raizing / Namco</manufacturer>

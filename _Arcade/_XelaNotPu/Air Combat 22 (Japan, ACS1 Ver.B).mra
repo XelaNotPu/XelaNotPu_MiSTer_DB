@@ -2,6 +2,8 @@
 	<name>Air Combat 22 (Japan, ACS1 Ver.B)</name>
 	<setname>airco22b</setname>
 	<rbf>Arcade-XNSUPER22_20261021</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1995</year>
 	<manufacturer>Namco</manufacturer>

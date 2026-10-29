@@ -9,6 +9,8 @@
 	<rotation>horizontal</rotation>
 	<region>Asia</region>
 	<rbf>XNZN1</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 
 	<!-- BIOS: Taito FX-1 BIOS, 512KB, ioctl_index 0 -->
 	<rom index="0" zip="coh1000t.zip" md5="none">

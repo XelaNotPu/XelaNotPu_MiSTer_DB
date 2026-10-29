@@ -9,6 +9,8 @@
 	<rotation>horizontal</rotation>
 	<region>Europe</region>
 	<rbf>ZN1Capcom</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 
 	<!-- BIOS: Capcom ZN-1 BIOS (coh1000c), 512KB, ioctl_index 0. Japanese mask ROM. -->
 	<rom index="0" zip="coh1000c.zip" md5="none">

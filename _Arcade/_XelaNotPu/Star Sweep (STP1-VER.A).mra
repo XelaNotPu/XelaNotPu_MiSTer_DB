@@ -4,6 +4,8 @@
 	<year>1997</year>
 	<manufacturer>Namco</manufacturer>
 	<rbf>XNSYSTEM11</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<buttons names="Rotate,-,-,-,-,-,Start,Coin,Pause,Service" default="A,B,X,Y,R,L,Start,Select"/>
 
 	<!-- NOTE: no banked-ROM windows in the MAME map for this game -->

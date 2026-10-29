@@ -2,6 +2,8 @@
 	<name>Techno Drive (Japan, TH1/VER.B)</name>
 	<setname>technodr</setname>
 	<rbf>XNSYSTEM12</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0277</mameversion>
 	<year>1998</year>
 	<manufacturer>Namco</manufacturer>

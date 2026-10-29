@@ -2,6 +2,8 @@
 	<name>Rave Racer (Japan, RV1)</name>
 	<setname>raveraceja</setname>
 	<rbf>Arcade-XNSYSTEM22_20261021</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1995</year>
 	<manufacturer>Namco</manufacturer>

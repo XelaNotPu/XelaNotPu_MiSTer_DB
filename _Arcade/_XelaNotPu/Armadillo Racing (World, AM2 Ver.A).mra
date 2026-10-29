@@ -2,6 +2,8 @@
 	<name>Armadillo Racing (World, AM2 Ver.A)</name>
 	<setname>adillor</setname>
 	<rbf>Arcade-XNSUPER22_20261021</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1997</year>
 	<manufacturer>Namco</manufacturer>

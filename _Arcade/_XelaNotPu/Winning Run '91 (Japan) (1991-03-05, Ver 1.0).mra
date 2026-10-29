@@ -2,6 +2,8 @@
 	<name>Winning Run '91 (Japan) (1991/03/05, Ver 1.0)</name>
 	<setname>winrun91</setname>
 	<rbf>Arcade-XNWINRUN_20261017</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1991</year>
 	<manufacturer>Namco</manufacturer>

@@ -3,6 +3,8 @@
 	<name>Paca Paca Passion Special (Japan, PSP1/VER.A)</name>
 	<setname>pacappsp</setname>
 	<rbf>XNSYSTEM12</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0277</mameversion>
 	<year>1999</year>
 	<manufacturer>Produce / Namco</manufacturer>

@@ -2,6 +2,8 @@
 	<name>Alpine Racer 2 (World, ARS2 Ver.A)</name>
 	<setname>alpinr2a</setname>
 	<rbf>Arcade-XNSUPER22_20261021</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1996</year>
 	<manufacturer>Namco</manufacturer>

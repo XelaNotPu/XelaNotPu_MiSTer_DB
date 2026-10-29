@@ -6,7 +6,8 @@
   <year>1995</year>
   <manufacturer>Namco</manufacturer>
   <rbf>Arcade-XNSYSTEMFL_20260924</rbf>
-  <about>Namco System FL PATREON release 2026-09-24 (XelaNotPu).</about>
+  <mraauthor>xelanotpu</mraauthor>
+  <about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu">Namco System FL PATREON release 2026-09-24 (XelaNotPu).</about>
   <buttons names="Accelerator,Start / Jump,Weapon 1,Weapon 2,Weapon 3,Coin,Service,Test,Pause" default="A,B,X,Y,L,R,Select,Start" />
   <!-- Steering uses standard Left/Right or normalized analog input. No brake or gear on Speed Racer. In test mode: Weapon 1 modifies, Weapon 2 moves up, Weapon 3 moves down; Service enters pages. -->
   <switches default="00">

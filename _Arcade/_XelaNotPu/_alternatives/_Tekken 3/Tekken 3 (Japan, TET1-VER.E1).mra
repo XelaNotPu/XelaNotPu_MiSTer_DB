@@ -2,6 +2,8 @@
 	<name>Tekken 3 (Japan, TET1/VER.E1)</name>
 	<setname>tekken3je1</setname>
 	<rbf>XNSYSTEM12</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0277</mameversion>
 	<year>1997</year>
 	<manufacturer>Namco</manufacturer>

@@ -3,6 +3,8 @@
 	<name>Kart Duel (World, KTD2/VER.A)</name>
 	<setname>kartduel</setname>
 	<rbf>XNSYSTEM12</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0277</mameversion>
 	<year>2000</year>
 	<manufacturer>Gaps / Namco</manufacturer>

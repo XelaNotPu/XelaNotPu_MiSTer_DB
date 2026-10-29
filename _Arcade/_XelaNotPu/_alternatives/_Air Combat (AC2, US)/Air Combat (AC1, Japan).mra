@@ -2,6 +2,8 @@
 	<name>Air Combat (AC1, Japan)</name>
 	<setname>aircombj</setname>
 	<rbf>Arcade-XNSYSTEM21_20261017</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1992</year>
 	<manufacturer>Namco</manufacturer>

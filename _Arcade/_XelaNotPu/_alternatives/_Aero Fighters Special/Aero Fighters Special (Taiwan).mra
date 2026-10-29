@@ -9,6 +9,8 @@
 	<rotation>vertical</rotation>
 	<region>Taiwan</region>
 	<rbf>XNZN1</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 
 	<!-- BIOS: Sony ZN-1 Visco BIOS, 512KB, ioctl_index 0 -->
 	<rom index="0" zip="coh1002v.zip" md5="none">

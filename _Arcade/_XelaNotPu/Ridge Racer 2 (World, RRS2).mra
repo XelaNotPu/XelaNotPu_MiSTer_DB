@@ -2,6 +2,8 @@
 	<name>Ridge Racer 2 (World, RRS2)</name>
 	<setname>ridgera2</setname>
 	<rbf>Arcade-XNSYSTEM22_20261021</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1994</year>
 	<manufacturer>Namco</manufacturer>

@@ -9,6 +9,8 @@
 	<rotation>horizontal</rotation>
 	<region>Asia</region>
 	<rbf>XNZN1</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 
 	<!-- BIOS: Eighting/Raizing ZN-1 BIOS, 512KB, ioctl_index 0 -->
 	<rom index="0" zip="coh1002e.zip" md5="none">
