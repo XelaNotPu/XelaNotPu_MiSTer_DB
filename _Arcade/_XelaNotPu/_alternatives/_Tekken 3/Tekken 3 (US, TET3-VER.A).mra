@@ -2,6 +2,8 @@
 	<name>Tekken 3 (US, TET3/VER.A)</name>
 	<setname>tekken3ua</setname>
 	<rbf>XNSYSTEM12</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0277</mameversion>
 	<year>1997</year>
 	<manufacturer>Namco</manufacturer>

@@ -2,6 +2,8 @@
 	<name>Truck Kyosokyoku (US, TKK2/VER.A)</name>
 	<setname>truckk</setname>
 	<rbf>XNSYSTEM12</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0277</mameversion>
 	<year>2000</year>
 	<manufacturer>Metro / Namco</manufacturer>

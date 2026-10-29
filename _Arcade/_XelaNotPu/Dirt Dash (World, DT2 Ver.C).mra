@@ -2,6 +2,8 @@
 	<name>Dirt Dash (World, DT2 Ver.C)</name>
 	<setname>dirtdash</setname>
 	<rbf>Arcade-XNSUPER22_20261021</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1996</year>
 	<manufacturer>Namco</manufacturer>

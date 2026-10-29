@@ -2,6 +2,8 @@
 	<name>Ace Driver: Victory Lap (World, ADV2)</name>
 	<setname>victlapa</setname>
 	<rbf>Arcade-XNSYSTEM22_20261021</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1996</year>
 	<manufacturer>Namco</manufacturer>

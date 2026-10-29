@@ -2,6 +2,8 @@
 	<name>Super World Stadium '99 (Japan, SS91/VER.A3)</name>
 	<setname>sws99</setname>
 	<rbf>XNSYSTEM12</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0277</mameversion>
 	<year>1999</year>
 	<manufacturer>Namco</manufacturer>

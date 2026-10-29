@@ -2,6 +2,8 @@
 	<name>Cyber Sled (CY1, World?)</name>
 	<setname>cybsleda</setname>
 	<rbf>Arcade-XNSYSTEM21_20261017</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1993</year>
 	<manufacturer>Namco</manufacturer>

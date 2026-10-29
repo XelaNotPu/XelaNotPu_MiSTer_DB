@@ -3,6 +3,8 @@
 	<name>Tenkomori Shooting (World, TKM2/VER.A1)</name>
 	<setname>tenkomor</setname>
 	<rbf>XNSYSTEM12</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0277</mameversion>
 	<year>1998</year>
 	<manufacturer>Namco</manufacturer>

@@ -2,6 +2,8 @@
 	<name>Starblade (ST2, World)</name>
 	<setname>starblad</setname>
 	<rbf>Arcade-XNSYSTEM21_20261017</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1991</year>
 	<manufacturer>Namco</manufacturer>

@@ -2,6 +2,8 @@
 	<name>Cyber Commando (Japan, CY1)</name>
 	<setname>cybrcomm</setname>
 	<rbf>Arcade-XNSYSTEM22_20261021</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<mameversion>0287</mameversion>
 	<year>1994</year>
 	<manufacturer>Namco</manufacturer>

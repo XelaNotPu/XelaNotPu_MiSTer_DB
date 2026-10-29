@@ -6,7 +6,8 @@
   <year>1994</year>
   <manufacturer>Namco</manufacturer>
   <rbf>Arcade-XNSYSTEMFL_20260924</rbf>
-  <about>Namco System FL PATREON release 2026-09-24 (XelaNotPu).</about>
+  <mraauthor>xelanotpu</mraauthor>
+  <about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu">Namco System FL PATREON release 2026-09-24 (XelaNotPu).</about>
   <buttons names="Accelerator,Brake,Shifter,Unused,Unused,Coin,Service,Test,Pause" default="A,B,X,Y,L,R,Select,Start" />
   <!-- Final Lap R cabinet controls: analog steering wheel (C75 AN5), analog accelerator pedal (AN7), analog brake pedal (AN6, released 0x00 .. pressed 0xff) and a 2-position shifter (IN1 bit 0x10), plus Coin/Service/Test. The config byte (rom index 10 = 01) selects this wiring in rtl/fl_inputs.sv: steering (Left/Right, analog axis or paddle, selected in the OSD), accelerator (button or right-stick axis), Brake (button, or the left-stick Y axis in Analog Pedal mode) and Shifter (each press flips the lever). Joystick slots 3-4 reach the C75 IN2 byte, which Final Lap R does not use (MAME marks every IN2 bit unknown; bit 0x80 would freeze the game), so the core holds IN2 idle in this mode and the slots are labelled Unused. -->
   <switches default="00">

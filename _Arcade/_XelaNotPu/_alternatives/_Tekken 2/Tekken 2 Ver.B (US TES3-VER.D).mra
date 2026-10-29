@@ -4,6 +4,8 @@
 	<year>1996</year>
 	<manufacturer>Namco</manufacturer>
 	<rbf>XNSYSTEM11</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 	<buttons names="LP,RP,LK,RK,-,-,Start,Coin,Pause,Service" default="A,B,X,Y,R,L,Start,Select"/>
 
 	<!-- NOTE: KEYCUS C406 not implemented in the core; game may or may not check it -->

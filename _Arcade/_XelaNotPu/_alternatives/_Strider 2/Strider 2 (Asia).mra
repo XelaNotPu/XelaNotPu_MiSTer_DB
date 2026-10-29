@@ -8,6 +8,8 @@
 	<joystick>8-way</joystick>
 	<rotation>horizontal</rotation>
 	<rbf>ZN2Capcom</rbf>
+	<mraauthor>xelanotpu</mraauthor>
+	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
 
 	<!-- idx0 BIOS coh3002c -->
 	<rom index="0" zip="coh3002c.zip" md5="none"><part name="m534002c-59.ic353" crc="e860ea8b"/></rom>
