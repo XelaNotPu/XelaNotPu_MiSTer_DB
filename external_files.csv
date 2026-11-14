@@ -1,4 +1,4 @@
-Path in MiSTer,URL,Size in bytes,MD5 Hash,Filter Terms
+Path in MiSTer,URL,Size in bytes (optional but recommended),MD5 Hash (optional but recommended),Filter Terms (optional)
 games/mame/1on1gov.zip,https://archive.org/download/mame-roms-merged_/MAME%20ROMs%20%28merged%29/1on1gov.zip,15003910,349d26dacfe90c77b0d691e12c9c9e0f,arcade arcade-xnzn1
 games/mame/500gp.zip,https://archive.org/download/mame-roms-merged_/MAME%20ROMs%20%28merged%29/500gp.zip,40299932,65e8098eed9cd9d2c7d7135b86677f94,arcade arcade-arcade-xnsuper23s_20261107
 games/mame/acedrive.zip,https://archive.org/download/mame-roms-merged_/MAME%20ROMs%20%28merged%29/acedrive.zip,7780118,caf2a203460ddbec50f726b9d12de74f,arcade arcade-arcade-xnsystem22_20261021
