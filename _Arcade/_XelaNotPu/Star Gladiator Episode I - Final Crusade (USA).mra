@@ -8,24 +8,18 @@
 	<joystick>8-way</joystick>
 	<rotation>horizontal</rotation>
 	<region>USA</region>
-	<rbf>ZN1Capcom</rbf>
-	<mraauthor>xelanotpu</mraauthor>
-	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
+	<rbf>Arcade-XNZN1Capcom_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
 
 	<!-- BIOS: Capcom ZN-1 BIOS (coh1000c), 512KB, ioctl_index 0. Japanese mask ROM. -->
 	<rom index="0" zip="coh1000c.zip" md5="none">
 		<part name="m534002c-13.ic353" crc="50033af6"/>
 	</rom>
 
-	<!-- Platform: Capcom ZN-1, ioctl_index 1. 0x25 = 0x05 + bit5 (4-button title,
-	     MAME capcom4b): KICK harness carries Guard/Kick on core buttons 3/4. -->
+	<!-- Platform: Capcom ZN-1 (0x05), ioctl_index 1 -->
 	<rom index="1">
-		<part>25</part>
+		<part>05</part>
 	</rom>
-
-	<!-- 4-button layout (MAME capcom4b): B1/B2 = attacks (P1), B3=Guard/B4=Kick
-	     (KICK harness). Default pad A,B,X,Y. -->
-	<buttons names="A,B,Guard,Kick,-,-,Start,Coin,Pause" default="A,B,X,Y,,,Start,Select,L3" count="4"/>
 
 	<!-- Country/program ROM: 512KB, ioctl_index 2, CPU 0x1FB80000 (MAME region "countryrom") -->
 	<rom index="2" zip="starglad.zip" md5="none">
@@ -73,10 +67,10 @@
 		<part name="dl-1425.bin" crc="d6cf5ef5"/>
 	</rom>
 
-	<!-- DIP switches map to zn_dsw via ~status[103:96] (base=96, 1 byte; ZN1.sv inverts).
-	     From MAME zn.cpp DSW: bit 0x02 = Service Mode (bios testmode). -->
 	<nvram index="9" size="2048"/>
-	<switches base="96" default="00">
-		<dip name="Service Mode" bits="1" ids="Off,On"/>
+	<switches default="00">
+		<dip name="Service Mode"  bits="1" ids="Off,On"/>
 	</switches>
+	<buttons names="V.Slash,H.Slash,Kick,Guard,-,-,Start,Coin,Pause" default="A,B,X,Y,R,L,Start,Select"/>
+
 </misterromdescription>

@@ -1,0 +1,59 @@
+<misterromdescription>
+	<name>Wedding Rhapsody (GX624 JAA)</name>
+	<setname>weddingr</setname>
+	<parent>konamigv</parent>
+	<year>1997</year>
+	<manufacturer>Konami</manufacturer>
+	<category>Quiz</category>
+	<players>2</players>
+	<joystick>8-way</joystick>
+	<rotation>horizontal</rotation>
+	<region>Japan</region>
+	<rbf>Arcade-XNKonamiGV_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
+
+	<!-- MAME: "Wedding Rhapsody (GX624 JAA)", set weddingr, Konami GV ("Baby Phoenix") board.
+	     The game is on a CD. Convert the MAME disc image games/mame/weddingr/weddingr.chd with
+	     Scripts > gv_chd_convert: it writes weddingr.bin (the disc as raw 2352-byte frames,
+	     mounted in image slot 0 by the <file> line below) and weddingr.gvt (+ .gvt.zip), the
+	     table of contents (ROM index 10). A .bin made with "chdman extractcd" works too:
+	     run the script with its toc-only option to add the .gvt.
+	     MAME lists this disc image as a bad dump (BAD_DUMP): it may hold read errors.
+	     Needs a MiSTer main program with MRA image mounting (<file>). -->
+
+	<!-- BIOS 999a01.7e, 512 KB, ioctl_index 0 (CPU 0x1FC00000) -->
+	<rom index="0" zip="konamigv.zip" md5="none">
+		<part name="999a01.7e" crc="ad498d2d"/>
+	</rom>
+
+	<!-- Per-set options byte, ioctl_index 1: bit 0 = answer-button panel (Control Type
+	     DIP below; "Joystick and Button" gives buttons 1-3 + stick instead). -->
+	<rom index="1">
+		<part>01</part>
+	</rom>
+
+	<!-- 93C46 EEPROM contents, 128 bytes, ioctl_index 9: the set's default image. It
+	     carries the game's identity: the game stops with "25C MBAD" with another one. -->
+	<rom index="9" zip="weddingr.zip" md5="none">
+		<part name="weddingr.25c" crc="b90509a0"/>
+	</rom>
+
+	<!-- Disc table of contents (2048 bytes), ioctl_index 10, read from the games/mame folder -->
+	<rom index="10" zip="weddingr/weddingr.gvt.zip" md5="none">
+		<part name="weddingr.gvt"/>
+	</rom>
+
+	<!-- Disc: raw 2352-byte-frame image in image slot 0 -->
+	<file delay="0" type="s" index="0" root="games" path="mame/weddingr/weddingr.bin"/>
+
+	<buttons names="Answer 1 (Pan Left),Answer 2 (Pan Right),Answer 3 (Zoom In),Answer 4 (Zoom Out),-,-,Start,Coin,Pause,Service,Test" default="A,B,X,Y,R,L,Start,Select" count="4"/>
+
+	<!-- 93C46 EEPROM (settings, high scores): saved by MiSTer to config/nvram/<name>.nvm -->
+	<nvram index="9" size="128"/>
+
+	<!-- MAME weddingr configuration "Control Type" (must match the setting in the game's
+	     service menu). Bit 0 = 0 (default) = 4 Buttons, as MAME's default. -->
+	<switches default="00">
+		<dip name="Control Type" bits="0" ids="4 Buttons,Joystick and Button"/>
+	</switches>
+</misterromdescription>

@@ -1,0 +1,72 @@
+<misterromdescription>
+	<name>Magical Date EX (Ver 2.01J)</name>
+	<setname>mgcldtex</setname>
+	<year>1997</year>
+	<manufacturer>Taito</manufacturer>
+	<category>Puzzle</category>
+	<players>2</players>
+	<joystick>8-way</joystick>
+	<rotation>horizontal</rotation>
+	<region>Japan</region>
+	<rbf>Arcade-XNZN1TaitoFX1A_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
+
+	<!-- BIOS: Taito FX-1 BIOS, 512KB, ioctl_index 0 -->
+	<rom index="0" zip="coh1000t.zip" md5="none">
+		<part name="m534002c-14.ic353" crc="e3f23b6e"/>
+	</rom>
+
+	<!-- Platform: Taito FX (0x02), ioctl_index 1 -->
+	<rom index="1">
+		<part>12</part>
+	</rom>
+
+	<!-- Banked ROM: 2 banks x 8MB = 16MB, ioctl_index 3, CPU 0x1F000000 (8MB window) -->
+	<!-- Bank 0: 2MB interleaved + 2MB empty + 4MB e32-01                       -->
+	<!-- Bank 1: e32-02 (4MB) + e32-03 (2MB) + 2MB empty                       -->
+	<!-- Fast loading: the banked ROM (index 3) comes in pieces; each <rom index="13">
+	     between them is an empty stretch of the banked image (length, 4 bytes little
+	     endian) that the core clears itself instead of receiving zeros. -->
+	<rom index="3" zip="mgcldtex.zip|coh1000t.zip" md5="none">
+		<interleave output="16">
+			<part name="e32-09.7" crc="db7ec115" map="01"/>
+			<part name="e32-08.2" crc="3d42cd28" map="10"/>
+		</interleave>
+	</rom>
+	<rom index="13"><part>00 00 20 00</part></rom>  <!-- gap: 0x200000 bytes of 00, cleared by the core -->
+	<rom index="3" zip="mgcldtex.zip|coh1000t.zip" md5="none">
+		<part name="e32-01.1" crc="cf5f1d01"/>
+		<part name="e32-02.6" crc="61c8438c"/>
+		<part name="e32-03.12" crc="190d1618"/>
+	</rom>
+	<rom index="13"><part>00 00 20 00</part></rom>  <!-- gap: 0x200000 bytes of 00, cleared by the core -->
+
+	<!-- CAT702 key A: motherboard key (tt01), 8 bytes, ioctl_index 4 -->
+	<rom index="4" zip="coh1000t.zip" md5="none">
+		<part name="tt01.ic652" crc="daac13e7"/>
+	</rom>
+
+	<!-- CAT702 key B: game key (tt06), 8 bytes, ioctl_index 5 -->
+	<rom index="5" zip="mgcldtex.zip" md5="none">
+		<part name="tt06" crc="ce282fc9"/>
+	</rom>
+
+	<!-- FX-1A sound: Z80 program (audiocpu), 128KB, ioctl_index 6.
+	     Added task #323: without index 6/7 the core keeps the YM2610B sound
+	     board disabled (sound_rom_present=0) and music is silent. -->
+	<rom index="6" zip="mgcldtex.zip" md5="none">
+		<part name="e32-10.22" crc="adf3feb5"/>
+	</rom>
+	<!-- FX-1A sound: YM2610B ADPCM-A samples, 4MB, ioctl_index 7 -->
+	<rom index="7" zip="mgcldtex.zip" md5="none">
+		<part name="e32-04.15" crc="c72f9eea"/>
+	</rom>
+
+	<nvram index="9" size="2048"/>
+	<switches default="00">
+		<dip name="Service Mode"  bits="1" ids="Off,On"/>
+		<dip name="Test Mode"     bits="3" ids="Off,On"/>
+	</switches>
+	<buttons names="Decide,Cancel,Look,-,-,-,Start,Coin,Pause" default="A,B,X,Y,R,L,Start,Select"/>
+
+</misterromdescription>

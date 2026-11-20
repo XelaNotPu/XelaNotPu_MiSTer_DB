@@ -1,0 +1,60 @@
+<misterromdescription>
+	<name>The Simpsons Bowling (GQ829 UAA)</name>
+	<setname>simpbowl</setname>
+	<parent>konamigv</parent>
+	<year>2000</year>
+	<manufacturer>Konami</manufacturer>
+	<category>Sports / Bowling</category>
+	<players>1</players>
+	<joystick>trackball</joystick>
+	<rotation>horizontal</rotation>
+	<region>USA</region>
+	<rbf>Arcade-XNKonamiGVTrack_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
+
+	<!-- MAME: "The Simpsons Bowling (GQ829 UAA)", set simpbowl, Konami GV999 board with the
+	     extension board (8 MB flash, uPD4701A trackball). Core: the trackball build KonamiGVTrack.
+	     The game is on a CD. Convert the MAME disc image games/mame/simpbowl/829uaa02.chd with
+	     Scripts > gv_chd_convert: it writes 829uaa02.bin (the disc as raw 2352-byte frames,
+	     mounted in image slot 0 by the <file> line below) and 829uaa02.gvt (+ .gvt.zip), the
+	     table of contents (ROM index 10).
+	     FIRST START: the flash is empty and the game shows "3A/3B/7A/7B: BAD - SEE MANUAL".
+	     Install the game from the CD into the flash: OSD > DIP > Test Mode On, Reset; the
+	     game shows "EEPROM INITIALIZED - NOW WRITING" with a progress bar (about 2 minutes);
+	     set Test Mode Off when it has restarted into the attract mode. The installed flash
+	     is saved with the EEPROM in the .nvm (8 MB; the save pauses the game for a few
+	     seconds) and loaded at every start.
+	     Trackball: the mouse (a USB trackball is a mouse) or player 1's left stick; OSD
+	     Trackball speed. Needs a MiSTer main program with MRA image mounting (<file>). -->
+
+	<!-- BIOS 999a01.7e, 512 KB, ioctl_index 0 (CPU 0x1FC00000) -->
+	<rom index="0" zip="konamigv.zip" md5="none">
+		<part name="999a01.7e" crc="ad498d2d"/>
+	</rom>
+
+	<!-- Per-set options byte, ioctl_index 1: 0x00 (standard panel). -->
+	<rom index="1">
+		<part>00</part>
+	</rom>
+
+	<!-- ioctl_index 11: the set's default .25c (93C46 contents, 128 bytes). It carries the
+	     game's identity: the game stops with "25C MBAD" with another one. The 8 MB
+	     extension flash starts erased (the core clears it; it is no longer sent as
+	     0xFF fill). The .nvm (index 9, below) replaces flash and 93C46 once saved. -->
+	<rom index="11" zip="simpbowl.zip" md5="none">
+		<part name="simpbowl.25c" crc="2c61050c"/>
+	</rom>
+
+	<!-- Disc table of contents (2048 bytes), ioctl_index 10, read from the games/mame folder -->
+	<rom index="10" zip="simpbowl/829uaa02.gvt.zip" md5="none">
+		<part name="829uaa02.gvt"/>
+	</rom>
+
+	<!-- Disc: raw 2352-byte-frame image in image slot 0 -->
+	<file delay="0" type="s" index="0" root="games" path="mame/simpbowl/829uaa02.bin"/>
+
+	<buttons names="Button 1,Button 2,Button 3,-,-,-,Start,Coin,Pause,Service,Test" default="A,B,X,R,L,Y,Start,Select" count="3"/>
+
+	<!-- Flash (8 MB) + 93C46 EEPROM: saved by MiSTer to config/nvram/<name>.nvm -->
+	<nvram index="9" size="8388736"/>
+</misterromdescription>

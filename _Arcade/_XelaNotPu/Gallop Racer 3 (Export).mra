@@ -7,9 +7,8 @@
 	<players>1</players>
 	<joystick>8-way</joystick>
 	<rotation>horizontal</rotation>
-	<rbf>XNZN1</rbf>
-	<mraauthor>xelanotpu</mraauthor>
-	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
+	<rbf>Arcade-XNZN1TecmoVSys_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
 
 	<!-- BIOS: Tecmo TPS System BIOS, 512KB, ioctl_index 0 -->
 	<rom index="0" zip="coh1002m.zip" md5="none">
@@ -27,12 +26,17 @@
 	<!-- Bank 2: gra3-3 (4MB) + gra3-4 (4MB)                                           -->
 	<!-- Bank 3: gra3-5 (4MB) + gra3-6 (4MB)                                           -->
 	<!-- Bank 4: gra3-7 (4MB) + 4MB empty                                               -->
+	<!-- Fast loading: the banked ROM (index 3) comes in pieces; each <rom index="13">
+	     between them is an empty stretch of the banked image (length, 4 bytes little
+	     endian) that the core clears itself instead of receiving zeros. -->
 	<rom index="3" zip="glpracr3.zip|coh1002m.zip" md5="none">
 		<interleave output="16">
 			<part name="2.120" crc="042273fb" map="01"/>
 			<part name="1.119" crc="89bdf567" map="10"/>
 		</interleave>
-		<part repeat="0x200000">00</part>
+	</rom>
+	<rom index="13"><part>00 00 20 00</part></rom>  <!-- gap: 0x200000 bytes of 00, cleared by the core -->
+	<rom index="3" zip="glpracr3.zip|coh1002m.zip" md5="none">
 		<part name="gra3-0.216" crc="b405ee65"/>
 		<part name="gra3-1.217" crc="a06f05ac"/>
 		<part name="gra3-2.218" crc="31793f9b"/>
@@ -41,8 +45,8 @@
 		<part name="gra3-5.221" crc="4994fb17"/>
 		<part name="gra3-6.222" crc="1362c1af"/>
 		<part name="gra3-7.223" crc="73565e1f"/>
-		<part repeat="0x400000">00</part>
 	</rom>
+	<rom index="13"><part>00 00 40 00</part></rom>  <!-- gap: 0x400000 bytes of 00, cleared by the core -->
 
 	<!-- CAT702 key A: motherboard key (mg01), 8 bytes, ioctl_index 4 -->
 	<rom index="4" zip="coh1002m.zip" md5="none">
@@ -54,10 +58,10 @@
 		<part name="mg08" crc="679367fe"/>
 	</rom>
 
-	<!-- DIP switches map to zn_dsw via ~status[103:96] (base=96, 1 byte; ZN1.sv inverts).
-	     status_bit=0 (default) -> zn_dsw bit=1 = MAME "Off"; status_bit=1 -> zn_dsw bit=0 = MAME "On".
-	     From MAME zn.cpp INPUT_PORTS_START(zn) parent DSW. -->
-	<switches base="96" default="00">
-		<dip name="Service Mode" bits="1" ids="Off,On"/>
+	<nvram index="9" size="2048"/>
+	<switches default="00">
+		<dip name="Service Mode"  bits="1" ids="Off,On"/>
 	</switches>
+	<buttons names="Whip,Reins,-,-,-,-,Start,Coin,Pause" default="A,B,X,Y,R,L,Start,Select"/>
+
 </misterromdescription>

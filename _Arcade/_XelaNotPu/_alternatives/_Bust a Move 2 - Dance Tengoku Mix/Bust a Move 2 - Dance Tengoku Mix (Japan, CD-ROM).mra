@@ -1,0 +1,72 @@
+<misterromdescription>
+	<name>Bust a Move 2 - Dance Tengoku Mix (Japan, CD-ROM ver. 1999/07/17)</name>
+	<setname>bam2a</setname>
+	<year>1999</year>
+	<manufacturer>Metro / Enix / Namco</manufacturer>
+	<category>Rhythm</category>
+	<players>2</players>
+	<joystick>8-way</joystick>
+	<rotation>horizontal</rotation>
+	<region>Japan</region>
+	<rbf>Arcade-XNZN1Metro_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
+
+	<!-- Core ZN1Metro, CD-ROM version of Bust a Move 2 (MAME bam2a, clone of bam2: the same ROMs,
+	     so bam2.zip is enough; the music is on a CD instead of the hard disk). Convert MAME's CD
+	     image games/mame/bam2/bam2cd.chd once with Scripts > zn_hdd_convert (it writes
+	     bam2cdmus.img, about 0.65 GB, next to the .chd; or give the script the .bin of
+	     "chdman extractcd -i bam2cd.chd -o bam2cd.cue -ob bam2cd.bin"). The core mounts
+	     bam2cdmus.img from the <file> line below; the game sees 27 tracks and takes its CD-ROM
+	     path. Without the image, or with OSD Music = Off, the game runs as in MAME (no music).
+	     DIP "Cabinet Type": Dedicated Cab (MAME default) = pedal on Down, Start/Jammar on
+	     Button 2, Up/Down Select on Button 3; Generic Cab = joystick, Jammar on Button 2. -->
+
+	<!-- BIOS: Eighting/Raizing ZN-1 BIOS, 512KB, ioctl_index 0 -->
+	<rom index="0" zip="coh1002e.zip" md5="none">
+		<part name="m27c402cz-54.ic353" crc="910f3a8b"/>
+	</rom>
+
+	<!-- Platform: Metro / Bust a Move 2 (0x07), ioctl_index 1 -->
+	<rom index="1">
+		<part>07</part>
+	</rom>
+
+	<!-- Banked ROM: region 0x2C00000 (44MB), ioctl_index 3 (MAME region "bankedroms").   -->
+	<!-- u19 (2MB) + u20 (2MB) + mtr-bam-a01..a10 (10 x 4MB), loaded contiguously.          -->
+	<rom index="3" zip="bam2a.zip|bam2.zip" md5="none">
+		<part name="u19" crc="4d9f2337"/>
+		<part name="u20" crc="1efb3c55"/>
+		<part name="mtr-bam-a01.u23" crc="5ed9e2dd"/>
+		<part name="mtr-bam-a02.u24" crc="be335265"/>
+		<part name="mtr-bam-a03.u25" crc="bf71791b"/>
+		<part name="mtr-bam-a04.u26" crc="d3aa62b5"/>
+		<part name="mtr-bam-a05.u27" crc="bd94d0ae"/>
+		<part name="mtr-bam-a06.u28" crc="b972c0b4"/>
+		<part name="mtr-bam-a07.u29" crc="e8f716c1"/>
+		<part name="mtr-bam-a08.u30" crc="6e691ff1"/>
+		<part name="mtr-bam-a09.u31" crc="e4bd7cec"/>
+		<part name="mtr-bam-a10.u32" crc="37fd1fa0"/>
+	</rom>
+
+	<!-- CAT702 key A: motherboard key (et01), 8 bytes, ioctl_index 4 -->
+	<rom index="4" zip="coh1002e.zip" md5="none">
+		<part name="et01.ic652" crc="a7dd922e"/>
+	</rom>
+
+	<!-- CAT702 key B: game key (et05), 8 bytes, ioctl_index 5 -->
+	<rom index="5" zip="bam2a.zip|bam2.zip" md5="none">
+		<part name="et05" crc="bb4a157c"/>
+	</rom>
+
+	<!-- Music image (scripts/zn_hdd_convert.sh from the user's bam2cd.chd) in image slot 0 -->
+	<file delay="0" type="s" index="0" root="games" path="mame/bam2/bam2cdmus.img"/>
+
+	<nvram index="9" size="2048"/>
+	<switches default="01">
+		<dip name="Cabinet Type"  bits="0" ids="Generic Cab,Dedicated Cab"/>
+		<dip name="Service Mode"  bits="1" ids="Off,On"/>
+		<dip name="Region"        bits="2,3" ids="Japanese,Korean,Japanese (2),English"/>
+	</switches>
+	<buttons names="Rhythm,Jammar,Select,-,-,-,Start,Coin,Pause" default="A,B,X,Y,R,L,Start,Select"/>
+
+</misterromdescription>
