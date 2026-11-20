@@ -1,0 +1,82 @@
+<misterromdescription>
+	<name>Mawasunda!! (Ver 2.08J)</name>
+	<setname>mawasunda</setname>
+	<year>2000</year>
+	<manufacturer>Taito</manufacturer>
+	<category>Miscellaneous</category>
+	<players>2</players>
+	<joystick>none</joystick>
+	<rotation>horizontal</rotation>
+	<region>Japan</region>
+	<rbf>Arcade-XNZN2TaitoGNET_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
+
+	<!-- MAME: "Mawasunda!! (V2.08J 2000/02/01 11:02:54)", set mawasunda, Japan.
+	     This game runs on the COH-1002T board (G-NET BIOS COH-1002T, Japanese, and the
+	     COH-1002T flash U30 and security chips), not on the COH-3002T used by the other
+	     G-NET games. The game lives on a Taito CompactFlash card (card e83-01, key-locked).
+	     Convert the MAME card image games/mame/mawasunda/e83-01__.chd with
+	     Scripts > gnet_chd_convert. It writes e83-01__.img, the card data as a raw disk
+	     image (mounted in image slot 0 by the <file> line below), and e83-01__.gni, the
+	     card type, key and information blocks (loaded as ROM index 10). An image made
+	     with "chdman extracthd" works too: run the script with its sidecar-only option to
+	     add the .gni. On first start the BIOS copies the game from the card into the flash
+	     chips.
+	     Controls: each player turns a crank handle, read by the ZN MCU as a trackball
+	     counter. Turn speed and direction come from the left stick X of that player's
+	     controller, or full speed from the d-pad left/right. Start buttons start the
+	     game (their lamps and the handle brake the game drives are outputs and are not
+	     shown). -->
+
+	<!-- Fast-loading stream, ioctl_index 0: one download that the core splits by offset
+	     (rtl/taitogn/gnet_rom_loader.sv):
+	       0x000000  main CPU BIOS, 512 KB           -> CPU 0x1FC00000
+	       0x080000  program flash U30, 2 MB         -> flash bank 0 +0x000000
+	     The rest of the 16 MB flash image is erased flash (0xFF): the core writes it
+	     itself after the download instead of receiving 13-14 MB of fill. -->
+	<rom index="0" zip="coh1002t.zip" md5="none">
+		<part name="m534002c-14.ic353" crc="e3f23b6e"/>
+		<part name="flash.u30" crc="9100dbf2"/>
+	</rom>
+
+	<!-- Platform byte, ioctl_index 1 (G-NET options): bit 0 JP1 fitted, bits 3:1
+	     cabinet inputs, bit 4 no Zoom sound board. Here 0x06: two crank handles. -->
+	<rom index="1">
+		<part>06</part>
+	</rom>
+
+	<!-- Game card sidecar: card type, key, card information and identify blocks
+	     (1,536 bytes), ioctl_index 10, read from the games/mame folder -->
+	<rom index="10" zip="mawasunda/e83-01__.gni.zip" md5="none">
+		<part name="e83-01__.gni"/>
+	</rom>
+
+	<!-- Game card data: raw disk image in image slot 0 -->
+	<file delay="0" type="s" index="0" root="games" path="mame/mawasunda/e83-01__.img"/>
+
+	<!-- CAT702 key A: motherboard key (tt01), 8 bytes, ioctl_index 4 -->
+	<rom index="4" zip="coh1002t.zip" md5="none">
+		<part name="tt01.ic652" crc="daac13e7"/>
+	</rom>
+
+	<!-- CAT702 key B: cart/game key (tt99), 8 bytes, ioctl_index 5 -->
+	<rom index="5" zip="coh1002t.zip" md5="none">
+		<part name="tt99.u17" crc="2989b6eb"/>
+	</rom>
+
+	<buttons names="-,-,-,-,-,-,Start,Coin,Pause,Service,Test" default="A,B,X,Y,R,L,Start,Select" count="0"/>
+
+	<!-- Mainboard AT28C16 settings memory (test-menu settings, calibration, high scores):
+	     saved by MiSTer to config/nvram/<name>.nvm, ioctl_index 9 -->
+	<nvram index="9" size="2048"/>
+
+	<!-- DIP switches S551 (4 positions), delivered to the game by the ZN MCU.
+	     Main_MiSTer sends them as download index 254; the core inverts them: value 0 (default) = DSW bit 1 = MAME default.
+	     From MAME taitogn.cpp INPUT_PORTS_START(znt2p) DSW. -->
+	<switches default="00">
+		<dip name="Unknown (S551:1)"  bits="0" ids="Off,On"/>
+		<dip name="Service Mode"      bits="1" ids="Off,On"/>
+		<dip name="Unknown (S551:3)"  bits="2" ids="Off,On"/>
+		<dip name="Test Mode"         bits="3" ids="Off,On"/>
+	</switches>
+</misterromdescription>

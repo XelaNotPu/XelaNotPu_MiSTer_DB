@@ -7,9 +7,8 @@
 	<players>2</players>
 	<joystick>8-way</joystick>
 	<rotation>vertical</rotation>
-	<rbf>XNZN1</rbf>
-	<mraauthor>xelanotpu</mraauthor>
-	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
+	<rbf>Arcade-XNZN1Raizing_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
 
 	<!-- BIOS: Tecmo TPS System BIOS (used by brvblade), 512KB, ioctl_index 0 -->
 	<rom index="0" zip="coh1002m.zip" md5="none">
@@ -26,14 +25,19 @@
 	<!-- Bank 0: flash0 (2MB) + flash1 (2MB) + 4MB empty                        -->
 	<!-- Bank 1: rom1 (4MB) + 4MB empty                                         -->
 	<!-- Bank 2: 8MB empty                                                       -->
+	<!-- Fast loading: the banked ROM (index 3) comes in pieces; each <rom index="13">
+	     between them is an empty stretch of the banked image (length, 4 bytes little
+	     endian) that the core clears itself instead of receiving zeros. -->
 	<rom index="3" zip="brvblade.zip" md5="none">
 		<part name="flash0.021" crc="97e12c63"/>
 		<part name="flash1.024" crc="d9d40a34"/>
-		<part repeat="0x400000">00</part>
-		<part name="ra-bbl_rom1.028" crc="418535e0"/>
-		<part repeat="0x400000">00</part>
-		<part repeat="0x800000">00</part>
 	</rom>
+	<rom index="13"><part>00 00 40 00</part></rom>  <!-- gap: 0x400000 bytes of 00, cleared by the core -->
+	<rom index="3" zip="brvblade.zip" md5="none">
+		<part name="ra-bbl_rom1.028" crc="418535e0"/>
+	</rom>
+	<rom index="13"><part>00 00 40 00</part></rom>  <!-- gap: 0x400000 bytes of 00, cleared by the core -->
+	<rom index="13"><part>00 00 80 00</part></rom>  <!-- gap: 0x800000 bytes of 00, cleared by the core -->
 
 	<!-- CAT702 key A: motherboard key (mg01 from Tecmo BIOS), 8 bytes, ioctl_index 4 -->
 	<rom index="4" zip="coh1002m.zip" md5="none">
@@ -45,13 +49,25 @@
 		<part name="mg11" crc="56d917de"/>
 	</rom>
 
-	<!-- DIP switches map to zn_dsw via ~status[103:96] (base=96, 1 byte; ZN1.sv inverts).
-	     status_bit=0 (default) -> zn_dsw bit=1 = MAME "Off"; status_bit=1 -> zn_dsw bit=0 = MAME "On".
-	     From MAME zn.cpp INPUT_PORTS_START(znt2p) DSW. -->
-		<switches base="96" default="00">
-		<dip name="DIP S551:1"   bits="0" ids="Off,On"/>
-		<dip name="Service Mode" bits="1" ids="Off,On"/>
-		<dip name="DIP S551:3"   bits="2" ids="Off,On"/>
-		<dip name="Test Mode"    bits="3" ids="Off,On"/>
-	</switches>
+	<!-- 68000 sound program, ioctl_index 6 -> SDRAM 0x4400000 (2 x 512KB, byte k = 68000 address k).
+	     MAME ROM_LOAD16_BYTE spu0u049 @0 (even), spu1u412 @1 (odd): map 01 = even byte (68000 D15-D8), map 10 = odd byte. -->
+	<rom index="6" zip="brvblade.zip" md5="none">
+		<interleave output="16">
+			<part name="spu0u049.bin" crc="c9df8ed9" map="01"/>
+			<part name="spu1u412.bin" crc="6408b5b2" map="10"/>
+		</interleave>
+	</rom>
+
+	<!-- YMF271 sample ROM ("ymf" region, 4MB), ioctl_index 7 -> SDRAM 0x4000000 -->
+	<rom index="7" zip="brvblade.zip" md5="none">
+		<part name="ra-bbl_rom2.336" crc="cd052c02"/>
+	</rom>
+
+		<nvram index="9" size="2048"/>
+		<switches default="00">
+			<dip name="Service Mode"  bits="1" ids="Off,On"/>
+			<dip name="Test Mode"     bits="3" ids="Off,On"/>
+		</switches>
+	<buttons names="Shot,Blade,Core,-,-,-,Start,Coin,Pause" default="A,B,X,Y,R,L,Start,Select"/>
+
 </misterromdescription>

@@ -1,0 +1,103 @@
+<misterromdescription>
+	<name>NBA Jam Extreme (ver. 1.04)</name>
+	<setname>nbajamexa</setname>
+	<year>1996</year>
+	<manufacturer>Acclaim</manufacturer>
+	<category>Sports</category>
+	<players>4</players>
+	<joystick>8-way</joystick>
+	<rotation>horizontal</rotation>
+	<rbf>Arcade-XNZN1Acclaim_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
+
+	<!-- Acclaim ZN-1 (COH-1000A), core ZN1Acclaim. Music and effects come from the RAX sound
+	     board (ADSP-2181, ROM image at index 10); the ZN SPU is mixed in as on the PCB. -->
+
+	<!-- BIOS: Acclaim ZN-1 BIOS (coh1000a), 512KB, ioctl_index 0 -->
+	<rom index="0" zip="coh1000a.zip" md5="none">
+		<part name="m534002c-15.ic353" crc="8d8d0764"/>
+	</rom>
+
+	<!-- Platform: Acclaim (0x06), ioctl_index 1 -->
+	<rom index="1">
+		<part>06</part>
+	</rom>
+
+	<!-- Banked ROM, ioctl_index 3: MAME "bankedroms" (32 MB, sixteen 2 MB entries).
+	     0x0000000 program u35/u36 (2 x 1 MB, 16-bit interleave)    entry 0
+	     0x0200000 nba0..nba6 e/o (7 x 2 x 2 MB, 16-bit interleave) entries 1-14
+	     0x1E00000 U6/U20 unpopulated, 2 MB of 0x00 (MAME region)   entry 15
+	     CPU 0x1F000000 = 2 MB window on entry (r0&7)*2+r0.bit4, 0x1F200000 = 6 MB window from
+	     entry (r1&7)*2+!r1.bit4 (bank register 0x1FBFFF00/02; see rtl/memorymux.vhd). -->
+	<!-- Fast loading: the banked ROM (index 3) comes in pieces; each <rom index="13">
+	     between them is an empty stretch of the banked image (length, 4 bytes little
+	     endian) that the core clears itself instead of receiving zeros. -->
+	<rom index="3" zip="nbajamexa.zip|nbajamex.zip" md5="none">
+		<interleave output="16">
+			<part name="360-mp-a1_even_cs_295a.u35" crc="d8f5b2f7" map="01"/>
+			<part name="360-mp-a1_odd_cs_e0fe.u36" crc="c433e827" map="10"/>
+		</interleave>
+		<interleave output="16">
+			<part name="nba0e.u41" crc="077f4355" map="01"/>
+			<part name="nba0o.u28" crc="be13c5af" map="10"/>
+		</interleave>
+		<interleave output="16">
+			<part name="nba1e.u42" crc="f1212cf9" map="01"/>
+			<part name="nba1o.u29" crc="3650e85b" map="10"/>
+		</interleave>
+		<interleave output="16">
+			<part name="nba2e.u43" crc="c20ab628" map="01"/>
+			<part name="nba2o.u30" crc="ccbb6125" map="10"/>
+		</interleave>
+		<interleave output="16">
+			<part name="nba3e.u44" crc="07ba00a3" map="01"/>
+			<part name="nba3o.u31" crc="d5238edf" map="10"/>
+		</interleave>
+		<interleave output="16">
+			<part name="nba4e.u17" crc="b5977765" map="01"/>
+			<part name="nba4o.u3" crc="1cf16a34" map="10"/>
+		</interleave>
+		<interleave output="16">
+			<part name="nba5e.u18" crc="0eb917da" map="01"/>
+			<part name="nba5o.u4" crc="5272754b" map="10"/>
+		</interleave>
+		<interleave output="16">
+			<part name="nba6e.u19" crc="6f17d8c1" map="01"/>
+			<part name="nba6o.u5" crc="b1dfb42e" map="10"/>
+		</interleave>
+	</rom>
+	<rom index="13"><part>00 00 20 00</part></rom>  <!-- gap: 0x200000 bytes of 00, cleared by the core -->
+
+	<!-- CAT702 key A: motherboard key (ac01), 8 bytes, ioctl_index 4 -->
+	<rom index="4" zip="coh1000a.zip" md5="none">
+		<part name="ac01.ic652" crc="c425eaf5"/>
+	</rom>
+
+	<!-- CAT702 key B: game key (ac02), 8 bytes, ioctl_index 5 -->
+	<rom index="5" zip="nbajamexa.zip|nbajamex.zip" md5="none">
+		<part name="ac02" crc="1412d475"/>
+	</rom>
+
+	<!-- RAX sound board byte memory, ioctl_index 10 -> DDR3 (rtl/acclaim/rax_board.sv): one 8 MB
+	     image as MAME's "rax" region. 360snda1.u52 (DSP program and boot) at 0x000000, 0x00 fill,
+	     sound0.u48 at 0x400000, sound1.u49 at 0x600000. -->
+	<rom index="10" zip="nbajamexa.zip|nbajamex.zip" md5="none">
+		<part name="360snda1.u52" crc="36d8a628"/>
+		<part repeat="0x380000">00</part>
+		<part name="sound0.u48" crc="38873b67"/>
+		<part name="sound1.u49" crc="57014589"/>
+	</rom>
+
+	<!-- NVRAM, ioctl_index 9: 34816 bytes = AT28C16 EEPROM (2 KB, .nvm 0x0000-0x07FF) followed by
+	     the 71256 battery SRAM (32 KB, .nvm 0x0800-0x87FF, CPU 0x1F200000-0x1F207FFF). -->
+	<nvram index="9" size="34816"/>
+
+	<!-- ZN board DSW S551 is read by the BIOS through the ZNMCU. Switch 2 On starts the Sony
+	     BIOS "TEST MODE" screen instead of the game (checked in MAME); MAME leaves 1/3/4 unnamed.
+	     The game's own service menu is the OSD "Service Menu" switch or the mapped Test button. -->
+	<switches default="00">
+		<dip bits="1" name="BIOS Test Mode" ids="Off,On"/>
+	</switches>
+
+	<buttons names="Button 1,Button 2,Button 3,Button 4,-,-,Start,Coin,Pause,Service,Test" default="A,B,X,Y,R,L,Start,Select"/>
+</misterromdescription>

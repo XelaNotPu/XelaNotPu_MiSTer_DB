@@ -1,0 +1,64 @@
+<misterromdescription>
+	<name>Dead Eye (GV054 UAA01)</name>
+	<setname>kdeadeye</setname>
+	<parent>konamigv</parent>
+	<year>1996</year>
+	<manufacturer>Konami</manufacturer>
+	<category>Shooter / Gun</category>
+	<players>2</players>
+	<joystick>Lightgun</joystick>
+	<rotation>horizontal</rotation>
+	<region>USA</region>
+	<rbf>Arcade-XNKonamiGVGun_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
+
+	<!-- MAME: "Dead Eye (GV054 UAA01)", set kdeadeye, Konami GV board (GV999) with the gun and
+	     flash extension board. Light-gun build of the core (KonamiGVGun.rbf).
+	     The game is on a CD. Convert the MAME disc image games/mame/kdeadeye/054uaa01.chd with
+	     Scripts > gv_chd_convert: it writes 054uaa01.bin (the disc as raw 2352-byte frames,
+	     mounted in image slot 0 by the <file> line below) and 054uaa01.gvt (+ .gvt.zip), the
+	     table of contents (ROM index 10). A .bin made with "chdman extractcd" works too
+	     (this disc is stored raw: track 1 MODE2/2352, 12 audio tracks): run the script with
+	     its toc-only option to add the .gvt.
+	     Two light guns: MiSTer USB light guns or analog sticks of players 1 and 2 (F10 calibrates
+	     a USB light gun), or a mouse (OSD Light Guns > Mouse as gun). Reload: shoot off the
+	     screen, or the Reload button. Camera-based light guns need OSD Light Guns > Gun border.
+	     Original-style guns with a light sensor: OSD Gun sensors = User port (SNAC), on a CRT.
+	     The game's own gun adjustment is in its test menu (OSD Test Mode, or the mapped Test button).
+	     Needs a MiSTer main program with MRA image mounting (<file>). -->
+
+	<!-- BIOS 999a01.7e, 512 KB, ioctl_index 0 (CPU 0x1FC00000) -->
+	<rom index="0" zip="konamigv.zip" md5="none">
+		<part name="999a01.7e" crc="ad498d2d"/>
+	</rom>
+
+	<!-- Per-set options byte, ioctl_index 1: 0x00 (no option of the plain GV sets applies). -->
+	<rom index="1">
+		<part>00</part>
+	</rom>
+
+	<!-- ioctl_index 9: the extension board's flash (512 KB, MAME's kdeadeye.flash, offsets
+	     0x00000-0x7FFFF) followed by the 93C46 EEPROM (128 bytes, kdeadeye.25c, offsets
+	     0x80000-0x8007F), both from the set's zip. The EEPROM carries the game's identity:
+	     the game stops with "25C MBAD" with another one. -->
+	<rom index="9" zip="kdeadeye.zip" md5="none">
+		<part name="kdeadeye.flash" crc="f87f18cf"/>
+		<part name="kdeadeye.25c" crc="3935d2df"/>
+	</rom>
+
+	<!-- Disc table of contents (2048 bytes), ioctl_index 10, read from the games/mame folder -->
+	<rom index="10" zip="kdeadeye/054uaa01.gvt.zip" md5="none">
+		<part name="054uaa01.gvt"/>
+	</rom>
+
+	<!-- Disc: raw 2352-byte-frame image in image slot 0 -->
+	<file delay="0" type="s" index="0" root="games" path="mame/kdeadeye/054uaa01.bin"/>
+
+	<buttons names="Trigger,Reload,-,-,-,-,Start,Coin,Pause,Service,Test" default="A,B,X,Y,R,L,Start,Select" count="2"/>
+
+	<!-- Flash (high scores, bookkeeping) and EEPROM (settings, identity), in the layout of
+	     index 9 above (524,416 bytes): saved by MiSTer to config/nvram/<name>.nvm and loaded
+	     again at the next start. The flash part is in MAME's byte order (MAME's
+	     nvram/kdeadeye/flash file is the same 512 KB). -->
+	<nvram index="9" size="524416"/>
+</misterromdescription>

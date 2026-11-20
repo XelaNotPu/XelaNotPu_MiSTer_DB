@@ -1,0 +1,63 @@
+<misterromdescription>
+	<name>Beat the Champ (GV053 UAA01)</name>
+	<setname>btchamp</setname>
+	<parent>konamigv</parent>
+	<year>1996</year>
+	<manufacturer>Konami</manufacturer>
+	<category>Sports / Multiple Events</category>
+	<players>2</players>
+	<joystick>trackball</joystick>
+	<rotation>horizontal</rotation>
+	<region>USA</region>
+	<rbf>Arcade-XNKonamiGVTrack_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
+
+	<!-- MAME: "Beat the Champ (GV053 UAA01)", set btchamp, Konami GV999 board with the extension
+	     board (512 KB flash, two uPD4701A trackballs). Core: the trackball build KonamiGVTrack.
+	     MAME marks the set "not working" without giving a reason; in MAME it plays once its
+	     flash is set up (below).
+	     The game is on a CD. Convert the MAME disc image games/mame/btchamp/btchamp.chd with
+	     Scripts > gv_chd_convert: it writes btchamp.bin (the disc as raw 2352-byte frames,
+	     mounted in image slot 0 by the <file> line below) and btchamp.gvt (+ .gvt.zip), the
+	     table of contents (ROM index 10). (The CHD is an old version-4 file: use a converter
+	     from 2026-11-16 or later.)
+	     FIRST START: the flash is empty and the game shows "FLASH ROM CORRUPT - DATA INVALID -
+	     POWERUP FAILED". Let the game set it up: OSD > DIP > Test Mode On, Reset; the game
+	     tests the flash ("FLASH ROM TEST BLOCK 1..8") and shows "RESTORING FACTORY DEFAULTS";
+	     set Test Mode Off once the attract mode runs. The flash is saved with the EEPROM in
+	     the .nvm and loaded at every start.
+	     Trackballs: player 1 = the mouse (a USB trackball is a mouse) or player 1's left
+	     stick, player 2 = player 2's left stick; OSD Trackball speed.
+	     Needs a MiSTer main program with MRA image mounting (<file>). -->
+
+	<!-- BIOS 999a01.7e, 512 KB, ioctl_index 0 (CPU 0x1FC00000) -->
+	<rom index="0" zip="konamigv.zip" md5="none">
+		<part name="999a01.7e" crc="ad498d2d"/>
+	</rom>
+
+	<!-- Per-set options byte, ioctl_index 1: 0x04 (bit 2: Beat the Champ extension board). -->
+	<rom index="1">
+		<part>04</part>
+	</rom>
+
+	<!-- ioctl_index 9: the extension-board flash (512 KB, erased = all FF; the game sets it up
+	     itself) followed by the 93C46 contents (128 bytes at 0x80000): the set's default
+	     .25c, which carries the game's identity. The .nvm (below) replaces both once saved. -->
+	<rom index="9" zip="btchamp.zip" md5="none">
+		<part repeat="0x8000">FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</part>
+		<part name="btchmp.25c" crc="6d02ea54"/>
+	</rom>
+
+	<!-- Disc table of contents (2048 bytes), ioctl_index 10, read from the games/mame folder -->
+	<rom index="10" zip="btchamp/btchamp.gvt.zip" md5="none">
+		<part name="btchamp.gvt"/>
+	</rom>
+
+	<!-- Disc: raw 2352-byte-frame image in image slot 0 -->
+	<file delay="0" type="s" index="0" root="games" path="mame/btchamp/btchamp.bin"/>
+
+	<buttons names="Button 1,Button 2,Button 3,-,-,-,Start,Coin,Pause,Service,Test" default="A,B,X,R,L,Y,Start,Select" count="3"/>
+
+	<!-- Flash (512 KB) + 93C46 EEPROM: saved by MiSTer to config/nvram/<name>.nvm -->
+	<nvram index="9" size="524416"/>
+</misterromdescription>

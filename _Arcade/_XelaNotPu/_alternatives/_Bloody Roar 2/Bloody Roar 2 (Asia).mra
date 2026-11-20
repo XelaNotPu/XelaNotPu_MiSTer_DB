@@ -8,9 +8,8 @@
 	<joystick>8-way</joystick>
 	<rotation>horizontal</rotation>
 	<region>Asia</region>
-	<rbf>XNZN1</rbf>
-	<mraauthor>xelanotpu</mraauthor>
-	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
+	<rbf>Arcade-XNZN1Raizing_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
 
 	<!-- BIOS: Eighting/Raizing ZN-1 BIOS, 512KB, ioctl_index 0 -->
 	<rom index="0" zip="coh1002e.zip" md5="none">
@@ -26,10 +25,15 @@
 	<!-- Bank 0: flash0 (2MB) + flash1 (2MB) + 4MB empty                        -->
 	<!-- Bank 1: rom-1a (4MB) + rom-1b (4MB)                                    -->
 	<!-- Bank 2: rom-2a (4MB) + rom-2b (4MB)                                    -->
+	<!-- Fast loading: the banked ROM (index 3) comes in pieces; each <rom index="13">
+	     between them is an empty stretch of the banked image (length, 4 bytes little
+	     endian) that the core clears itself instead of receiving zeros. -->
 	<rom index="3" zip="bldyror2a.zip|bldyror2.zip" md5="none">
 		<part name="flash0.021" crc="fa7602e1"/>
 		<part name="flash1.024" crc="03465a69"/>
-		<part repeat="0x400000">00</part>
+	</rom>
+	<rom index="13"><part>00 00 40 00</part></rom>  <!-- gap: 0x400000 bytes of 00, cleared by the core -->
+	<rom index="3" zip="bldyror2a.zip|bldyror2.zip" md5="none">
 		<part name="rom-1a.028" crc="0e711461"/>
 		<part name="rom-1b.29" crc="0cf153f9"/>
 		<part name="rom-2a.026" crc="b71d955d"/>
@@ -46,17 +50,31 @@
 		<part name="et03" crc="779b0bfd"/>
 	</rom>
 
+	<!-- 68000 sound program, ioctl_index 6 -> SDRAM 0x4400000 (2 x 512KB, byte k = 68000 address k).
+	     MAME ROM_LOAD16_BYTE br2_u049 @0 (even), br2_u0412 @1 (odd): map 01 = even byte (68000 D15-D8), map 10 = odd byte. -->
+	<rom index="6" zip="bldyror2a.zip|bldyror2.zip" md5="none">
+		<interleave output="16">
+			<part name="br2_u049.049" crc="10dc855b" map="01"/>
+			<part name="br2_u0412.412" crc="e254dd8a" map="10"/>
+		</interleave>
+	</rom>
+
+	<!-- YMF271 sample ROM ("ymf" region, 4MB), ioctl_index 7 -> SDRAM 0x4000000 -->
+	<rom index="7" zip="bldyror2a.zip|bldyror2.zip" md5="none">
+		<part name="rom-3.336" crc="b74cc4d1"/>
+	</rom>
+
 	<!-- AT28C16 EEPROM preload (RAI signature), ioctl_index 9 - valid content at boot,
 	     game validates and skips its fragile blank-EEPROM re-init/verify path -->
 	<rom index="9" zip="bldyror2a.zip|bldyror2.zip" md5="none">
 		<part name="at28c16_asia" crc="da8c1a64"/>
 	</rom>
 
-	<!-- DIP switches map to zn_dsw via ~status[103:96] (base=96, 1 byte; ZN1.sv inverts).
-	     status_bit=0 (default) -> zn_dsw bit=1 = MAME "Off"; status_bit=1 -> zn_dsw bit=0 = MAME "On".
-	     From MAME zn.cpp INPUT_PORTS_START(znt2p) DSW. -->
-	<switches base="96" default="00">
-		<dip name="Service Mode" bits="1" ids="Off,On"/>
-		<dip name="Test Mode"    bits="3" ids="Off,On"/>
+	<nvram index="9" size="2048"/>
+	<switches default="00">
+		<dip name="Service Mode"  bits="1" ids="Off,On"/>
+		<dip name="Test Mode"     bits="3" ids="Off,On"/>
 	</switches>
+	<buttons names="Punch,Kick,Beast,Guard,-,-,Start,Coin,Pause" default="A,B,X,Y,R,L,Start,Select"/>
+
 </misterromdescription>

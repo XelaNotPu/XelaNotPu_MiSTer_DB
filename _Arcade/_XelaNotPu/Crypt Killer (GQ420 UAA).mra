@@ -1,0 +1,59 @@
+<misterromdescription>
+	<name>Crypt Killer (GQ420 UAA)</name>
+	<setname>cryptklr</setname>
+	<year>1995</year>
+	<manufacturer>Konami</manufacturer>
+	<category>Shooter / Gun</category>
+	<players>3</players>
+	<joystick>Lightgun</joystick>
+	<rotation>horizontal</rotation>
+	<region>USA</region>
+	<rbf>Arcade-XNKonamiGQ_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
+
+	<!-- MAME: "Crypt Killer (GQ420 UAA)", set cryptklr, Konami GQ board (no BIOS or parent set).
+	     The game is on a SCSI hard disk: convert MAME's disk image games/mame/cryptklr/420uaa04.chd
+	     once with Scripts > gq_hdd_convert (or "chdman extracthd -i 420uaa04.chd -o 420uaa04.img");
+	     the core mounts 420uaa04.img (542,868,480 bytes) from the <file> line below. The disk is
+	     only read. Needs a MiSTer main program with MRA image mounting (<file>).
+	     Three light guns: MiSTer USB light guns or analog sticks of players 1-3 (F10 calibrates a
+	     USB light gun), or a mouse (OSD Light Guns > Mouse as gun); Trigger and Reload (the pump).
+	     Camera-based light guns need OSD Light Guns > Gun border. Original-style guns with a
+	     light sensor (guns 1 and 2): OSD Gun sensors = User port (SNAC), on a CRT. The game's own
+	     gun adjustment is in its test menu (OSD Service Mode or the mapped Test button). -->
+
+	<!-- ioctl_index 0, one stream loaded at SDRAM 0x0400000: BIOS 420b03.27p (CPU 0x1FC00000),
+	     sound 68000 program 420a01.2g, K054539 sample ROM 420a02.3m (512 KB each) -->
+	<rom index="0" zip="cryptklr.zip" md5="none">
+		<part name="420b03.27p" crc="aab391b1"/>
+		<part name="420a01.2g" crc="84fc2613"/>
+		<part name="420a02.3m" crc="2169c3c4"/>
+	</rom>
+
+	<!-- Hard disk (MAME "420uaa04", SHA1 67cb1418fc0de2a89fc61847dc9efb9f1bebb347, data SHA1
+	     18fe867c44982bacf0d3ff8453487cd06425a6b7): raw image in image slot 0 -->
+	<file delay="0" type="s" index="0" root="games" path="mame/cryptklr/420uaa04.img"/>
+
+	<!-- 93C46 EEPROM (game identity, settings), 128 bytes. The core has no contents of its own.
+	     On the first start there is no saved file: the core holds the board's test switch on
+	     until the game has written its factory settings to the chip (the game shows
+	     "RELEASE TEST SW" for a moment, about a minute after launch), then the game carries
+	     on to its title. MiSTer saves the result as
+	       /media/fat/config/nvram/Crypt Killer (GQ420 UAA).nvm
+	     (open the OSD once to be sure it is written). Later starts load that file. A file
+	     from MAME (nvram/cryptklr/eeprom, 128 bytes) works too. -->
+	<nvram index="9" size="128"/>
+
+	<!-- DIP switches (MAME port DSW, bits 0-5), sent to the core as download index 254.
+	     Bit 2 (Mirror, default No) is held at No by the core: mirrored monitor output is not
+	     implemented, and Yes only moves the picture. -->
+	<switches default="3D">
+		<dip bits="0" name="Sound" ids="Mono,Stereo"/>
+		<dip bits="1" name="Stage Set" ids="6st End,Endless"/>
+		<dip bits="3" name="Woofer" ids="Yes,No"/>
+		<dip bits="4" name="Number of Players" ids="2,3"/>
+		<dip bits="5" name="Coin Mechanism (2p only)" ids="Independent,Common"/>
+	</switches>
+
+	<buttons names="Trigger,Reload,-,-,-,-,Start,Coin,Pause,Service,Test" default="A,B,X,Y,R,L,Start,Select" count="3"/>
+</misterromdescription>

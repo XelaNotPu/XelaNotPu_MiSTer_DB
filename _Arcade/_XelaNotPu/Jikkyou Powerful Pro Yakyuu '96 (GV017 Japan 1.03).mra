@@ -1,0 +1,52 @@
+<misterromdescription>
+	<name>Jikkyou Powerful Pro Yakyuu '96 (GV017 Japan 1.03)</name>
+	<setname>powyak96</setname>
+	<parent>konamigv</parent>
+	<year>1996</year>
+	<manufacturer>Konami</manufacturer>
+	<category>Sports / Baseball</category>
+	<players>2</players>
+	<joystick>8-way</joystick>
+	<rotation>horizontal</rotation>
+	<region>Japan</region>
+	<rbf>Arcade-XNKonamiGV_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
+
+	<!-- MAME: "Jikkyou Powerful Pro Yakyuu '96 (GV017 Japan 1.03)", set powyak96, Konami GV ("Baby Phoenix") board.
+	     The game is on a CD. Convert the MAME disc image games/mame/powyak96/powyak96.chd with
+	     Scripts > gv_chd_convert: it writes powyak96.bin (the disc as raw 2352-byte frames,
+	     mounted in image slot 0 by the <file> line below) and powyak96.gvt (+ .gvt.zip), the
+	     table of contents (ROM index 10). A .bin made with "chdman extractcd" works too:
+	     run the script with its toc-only option to add the .gvt.
+	     MAME lists this disc image as a bad dump (BAD_DUMP): it may hold read errors.
+	     Needs a MiSTer main program with MRA image mounting (<file>). -->
+
+	<!-- BIOS 999a01.7e, 512 KB, ioctl_index 0 (CPU 0x1FC00000) -->
+	<rom index="0" zip="konamigv.zip" md5="none">
+		<part name="999a01.7e" crc="ad498d2d"/>
+	</rom>
+
+	<!-- Per-set options byte, ioctl_index 1: 0x00 (standard panel). -->
+	<rom index="1">
+		<part>00</part>
+	</rom>
+
+	<!-- 93C46 EEPROM contents, 128 bytes, ioctl_index 9: the set's default image. It
+	     carries the game's identity: the game stops with "25C MBAD" with another one. -->
+	<rom index="9" zip="powyak96.zip" md5="none">
+		<part name="powyak96.25c" crc="405a7fc9"/>
+	</rom>
+
+	<!-- Disc table of contents (2048 bytes), ioctl_index 10, read from the games/mame folder -->
+	<rom index="10" zip="powyak96/powyak96.gvt.zip" md5="none">
+		<part name="powyak96.gvt"/>
+	</rom>
+
+	<!-- Disc: raw 2352-byte-frame image in image slot 0 -->
+	<file delay="0" type="s" index="0" root="games" path="mame/powyak96/powyak96.bin"/>
+
+	<buttons names="Button 1,Button 2,Button 3,-,-,-,Start,Coin,Pause,Service,Test" default="A,B,X,R,L,Y,Start,Select" count="3"/>
+
+	<!-- 93C46 EEPROM (settings, high scores): saved by MiSTer to config/nvram/<name>.nvm -->
+	<nvram index="9" size="128"/>
+</misterromdescription>

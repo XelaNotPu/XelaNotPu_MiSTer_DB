@@ -8,9 +8,8 @@
 	<joystick>8-way</joystick>
 	<rotation>horizontal</rotation>
 	<region>Japan</region>
-	<rbf>XNZN1</rbf>
-	<mraauthor>xelanotpu</mraauthor>
-	<about author="xelanotpu" webpage="https://www.patreon.com/XelaNotPu" />
+	<rbf>Arcade-XNZN1TecmoVSys_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
 
 	<!-- BIOS: Tecmo TPS System BIOS, 512KB, ioctl_index 0 -->
 	<rom index="0" zip="coh1002m.zip" md5="none">
@@ -26,12 +25,17 @@
 	<!-- Bank 0: 1MB interleaved + 7MB empty                                    -->
 	<!-- Bank 1: sh-00 (4MB) + sh-01 (4MB)                                     -->
 	<!-- Bank 2: sh-02 (4MB) + sh-03 (4MB)                                     -->
+	<!-- Fast loading: the banked ROM (index 3) comes in pieces; each <rom index="13">
+	     between them is an empty stretch of the banked image (length, 4 bytes little
+	     endian) that the core clears itself instead of receiving zeros. -->
 	<rom index="3" zip="shngmtkb.zip|coh1002m.zip" md5="none">
 		<interleave output="16">
 			<part name="shmj-a.120" crc="a789defa" map="01"/>
 			<part name="shmj-b.119" crc="65522c67" map="10"/>
 		</interleave>
-		<part repeat="0x700000">00</part>
+	</rom>
+	<rom index="13"><part>00 00 70 00</part></rom>  <!-- gap: 0x700000 bytes of 00, cleared by the core -->
+	<rom index="3" zip="shngmtkb.zip|coh1002m.zip" md5="none">
 		<part name="sh-00.217" crc="081fed1c"/>
 		<part name="sh-01.218" crc="5a84ea96"/>
 		<part name="sh-02.219" crc="c8f80d76"/>
@@ -48,10 +52,10 @@
 		<part name="mg04" crc="2711a75f"/>
 	</rom>
 
-	<!-- DIP switches map to zn_dsw via ~status[103:96] (base=96, 1 byte; ZN1.sv inverts).
-	     status_bit=0 (default) -> zn_dsw bit=1 = MAME "Off"; status_bit=1 -> zn_dsw bit=0 = MAME "On".
-	     From MAME zn.cpp INPUT_PORTS_START(zn) parent DSW. -->
-	<switches base="96" default="00">
-		<dip name="Service Mode" bits="1" ids="Off,On"/>
+	<nvram index="9" size="2048"/>
+	<switches default="00">
+		<dip name="Service Mode"  bits="1" ids="Off,On"/>
 	</switches>
+	<buttons names="Select,Cancel,Hint,-,-,-,Start,Coin,Pause" default="A,B,X,Y,R,L,Start,Select"/>
+
 </misterromdescription>

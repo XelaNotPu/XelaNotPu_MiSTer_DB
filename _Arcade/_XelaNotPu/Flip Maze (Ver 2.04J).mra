@@ -1,0 +1,75 @@
+<misterromdescription>
+	<name>Flip Maze (Ver 2.04J)</name>
+	<setname>flipmaze</setname>
+	<year>1999</year>
+	<manufacturer>MOSS / Taito</manufacturer>
+	<category>Puzzle</category>
+	<players>2</players>
+	<joystick>8-way</joystick>
+	<rotation>horizontal</rotation>
+	<region>Japan</region>
+	<rbf>Arcade-XNZN2TaitoGNET_20261119</rbf>
+	<mraauthor>XelaNotPu</mraauthor>
+
+	<!-- MAME: "Flip Maze (V2.04J 1999/09/02 20:00)", set flipmaze.
+	     The game lives on a Taito PC card (type 1, key-locked). Convert the MAME card
+	     image games/mame/flipmaze/flipmaze.chd with Scripts > gnet_chd_convert. It writes
+	     flipmaze.img, the card data as a raw disk image (mounted in image slot 0 by the
+	     <file> line below), and flipmaze.gni, the card type, key and information blocks
+	     (loaded as ROM index 10). An image made with "chdman extracthd" works too: run
+	     the script with its sidecar-only option to add the .gni. Cards converted to the
+	     older single .gnc file: run the script with its migrate option.
+	     On first start the BIOS copies the game from the card into the flash chips. -->
+
+	<!-- Fast-loading stream, ioctl_index 0: one download that the core splits by offset
+	     (rtl/taitogn/gnet_rom_loader.sv):
+	       0x000000  main CPU BIOS, 512 KB           -> CPU 0x1FC00000
+	       0x080000  program flash U30, 2 MB         -> flash bank 0 +0x000000
+	     The rest of the 16 MB flash image is erased flash (0xFF): the core writes it
+	     itself after the download instead of receiving 13-14 MB of fill. -->
+	<rom index="0" zip="coh3002t.zip" md5="none">
+		<part name="m534002c-60.ic353" crc="03967fa7"/>
+		<part name="flash.u30" crc="c48c8236"/>
+	</rom>
+
+	<!-- Platform byte, ioctl_index 1 (G-NET options): bit 0 JP1 fitted, bits 3:1
+	     cabinet inputs, bit 4 no Zoom sound board. Here 0x00: standard joystick panel. -->
+	<rom index="1">
+		<part>00</part>
+	</rom>
+
+	<!-- Game card sidecar: card type, key, card information and identify blocks
+	     (1,536 bytes), ioctl_index 10, read from the games/mame folder -->
+	<rom index="10" zip="flipmaze/flipmaze.gni.zip" md5="none">
+		<part name="flipmaze.gni"/>
+	</rom>
+
+	<!-- Game card data: raw disk image in image slot 0 -->
+	<file delay="0" type="s" index="0" root="games" path="mame/flipmaze/flipmaze.img"/>
+
+	<!-- CAT702 key A: motherboard key (tt10), 8 bytes, ioctl_index 4 -->
+	<rom index="4" zip="coh3002t.zip" md5="none">
+		<part name="tt10.ic652" crc="235510b1"/>
+	</rom>
+
+	<!-- CAT702 key B: cart/game key (tt16), 8 bytes, ioctl_index 5 -->
+	<rom index="5" zip="coh3002t.zip" md5="none">
+		<part name="tt16.u17" crc="6bb167b3"/>
+	</rom>
+
+	<buttons names="Button 1,Button 2,Button 3,-,-,-,Start,Coin,Pause,Service,Test" default="A,B,X,Y,R,L,Start,Select" count="3"/>
+
+	<!-- Mainboard AT28C16 settings memory (test-menu settings, calibration, high scores):
+	     saved by MiSTer to config/nvram/<name>.nvm, ioctl_index 9 -->
+	<nvram index="9" size="2048"/>
+
+	<!-- DIP switches S551 (4 positions), delivered to the game by the ZN MCU.
+	     Main_MiSTer sends them as download index 254; the core inverts them: value 0 (default) = DSW bit 1 = MAME default.
+	     From MAME taitogn.cpp INPUT_PORTS_START(znt2p) DSW. -->
+	<switches default="00">
+		<dip name="Unknown (S551:1)"  bits="0" ids="Off,On"/>
+		<dip name="Service Mode"      bits="1" ids="Off,On"/>
+		<dip name="Unknown (S551:3)"  bits="2" ids="Off,On"/>
+		<dip name="Test Mode"         bits="3" ids="Off,On"/>
+	</switches>
+</misterromdescription>
